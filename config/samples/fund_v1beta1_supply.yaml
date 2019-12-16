@@ -1,0 +1,7 @@
+apiVersion: fund.example.com/v1beta1
+kind: Supply
+metadata:
+  name: supply-sample
+spec:
+  # Add fields here
+  foo: bar

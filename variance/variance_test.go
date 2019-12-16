@@ -1,16 +1,16 @@
 package variance
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 
 	"github.com/YaoZengzeng/variance/types"
 )
 
 func TestMinVariance(t *testing.T) {
 	tests := []struct {
-		f int
-		pool types.Pools
+		f        int
+		pool     types.Pools
 		expected map[string]int
 	}{
 		// All pi cut to the same value.

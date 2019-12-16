@@ -1,0 +1,26 @@
+# permissions to do edit supplies.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: supply-editor-role
+rules:
+- apiGroups:
+  - fund.example.com
+  resources:
+  - supplies
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - fund.example.com
+  resources:
+  - supplies/status
+  verbs:
+  - get
+  - patch
+  - update

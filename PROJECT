@@ -1,0 +1,10 @@
+domain: example.com
+repo: github.com/YaoZengzeng/variance
+resources:
+- group: fund
+  kind: FundPool
+  version: v1beta1
+- group: fund
+  kind: Supply
+  version: v1beta1
+version: "2"

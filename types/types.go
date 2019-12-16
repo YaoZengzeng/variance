@@ -1,7 +1,7 @@
 package types
 
 type Pool struct {
-	Name string
+	Name  string
 	Value int
 }
 
