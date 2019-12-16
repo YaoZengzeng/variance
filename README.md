@@ -26,21 +26,22 @@
 
 ## 实现方法
 
-首先将p1到pn从大到小进行排序得到数组M。遍历M，构建另外一个数组N，N[i]包含如下元素：
+本质上是从上往下逐步累加计算由相邻两条虚线构建的矩形的面积直到大于f，再依次计算各个pi需要减去的数值
 
-* M[i] - M[i+1]的差值delta
-* 值为M[i]的各个pi
-* aggr为M[0]到M[i-1]的delta的和
+![rectangle](./pic/rectangle.jpeg)
 
-len为N[i]之前（包括i）所有出现过的pi的数目，最后遍历数组N，当处理N[i]时：
+具体实现中各个主要的变量为：
+* 首先将p1到pn从大到小进行排序得到数组P
 
-* 若(f - len * delta) > 0且len < n，则f = (f - len * delta)，继续遍历；否则遍历结束，记录下i；max = (aggr + f / len)；remainder = (f % len)。
+* 变量aggr为减去最多的pi的数值，它会在整个过程中逐步累加，每经过一个矩形，都加上该矩形的宽度。当遍历到最后一个矩形时，累加的值为f的剩余值除以该矩形的长度
 
-最后初始化一个map，名字为result，它的key为pi的名字，value为pi应当减去的数值。再次遍历数组N到i，处理步骤如下：
+* 变量remainder为遍历到最后一个矩形时，f的剩余值除以该矩形的长度的余数
 
-* 将N[i]中的各个pi加入到result中且值为max - aggr
+遍历数组P (注：从index 1开始遍历直到len(P)):
 
-最后，在result中任意选择remainder个元素，将它们的值减1，result即为我们需要的结果
+* 若当前下标为len(P)，计算aggr和remainder并遍历结束
+
+* 若当前下标的pi和上一个pi的高度不同，则出现一个新的矩形，计算该矩形的面积，若面积大于剩余的f值，则结束遍历，计算aggr和remainder；否则更新aggr，继续遍历
 
 ## 复杂度分析
 
