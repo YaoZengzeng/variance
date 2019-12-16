@@ -46,3 +46,28 @@
 ## 复杂度分析
 
 可以看到，除了最初的排序以外，后续的操作都是线性地遍历，而各种排序算法中最好的复杂度可以达到O(nlogn)，因此本问题一般的复杂度最好可以为O(nlogn)
+
+## 测试验证
+
+在一个终端执行如下命令
+
+```bash
+# 注册CRD
+make install
+
+# 简单地运行operator
+make run
+```
+
+在另一个终端执行如下命令
+
+```
+# 创建两个FundPool资源对象
+kubectl apply -f config/samples/fundpool-1.yaml
+kubectl apply -f config/samples/fundpool-2.yaml
+
+# 确保上述两个FundPool已经存在的情况下，创建一个Supply资源对象
+kubectl apply -f config/samples/supply-once.yaml
+```
+
+最终通过查看FundPool和Supply资源对象各实例等详情，可知结果符合预期
