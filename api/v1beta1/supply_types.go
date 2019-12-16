@@ -24,17 +24,32 @@ import (
 
 // SupplySpec defines the desired state of Supply
 type SupplySpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	// +kubebuilder:validation:Minimum=0
 
-	// Foo is an example field of Supply. Edit Supply_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// Request of the Supply.
+	Request *int64 `json:"request"`
 }
 
 // SupplyStatus defines the observed state of Supply
 type SupplyStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	// Specify the phase supply.
+	Phase Phase `json:"phase"`
+
+	// Allocations to satisify supply.
+	Allocations []Allocation `json:"allocations"`
+}
+
+// Phase describes the stage of supply
+type Phase string
+
+const (
+	// Successfully get funds from the fund pool.
+	Succeeded Phase = "Succeeded"
+)
+
+type Allocation struct {
+	Pool       string `json:"pool"`
+	Shortfalls *int64 `json:"shortfalls"`
 }
 
 // +kubebuilder:object:root=true

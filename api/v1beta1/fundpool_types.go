@@ -24,18 +24,12 @@ import (
 
 // FundPoolSpec defines the desired state of FundPool
 type FundPoolSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo is an example field of FundPool. Edit FundPool_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// Balance of the Fund Pool.
+	Balance *int64 `json:"balance"`
 }
 
-// FundPoolStatus defines the observed state of FundPool
-type FundPoolStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-}
+// NOTE: FundPool don't need status.
+// type FundPoolStatus struct {}
 
 // +kubebuilder:object:root=true
 
@@ -44,8 +38,8 @@ type FundPool struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   FundPoolSpec   `json:"spec,omitempty"`
-	Status FundPoolStatus `json:"status,omitempty"`
+	Spec FundPoolSpec `json:"spec,omitempty"`
+	// Status FundPoolStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true
