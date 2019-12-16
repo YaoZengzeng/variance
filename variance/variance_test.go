@@ -10,103 +10,103 @@ import (
 func TestMinVariance(t *testing.T) {
 	tests := []struct {
 		f        int
-		pool     types.Pools
+		pools    types.Pools
 		expected map[string]int
 	}{
 		// All pi cut to the same value.
 		{
-			40,
-			types.Pools{
+			f: 40,
+			pools: types.Pools{
 				{
-					"f1",
-					120,
+					Name:  "f1",
+					Value: 120,
 				},
 				{
-					"f2",
-					100,
+					Name:  "f2",
+					Value: 100,
 				},
 			},
-			map[string]int{
+			expected: map[string]int{
 				"f1": 30,
 				"f2": 10,
 			},
 		},
 		// All pi cut to 0.
 		{
-			40,
-			types.Pools{
+			f: 40,
+			pools: types.Pools{
 				{
-					"f1",
-					30,
+					Name:  "f1",
+					Value: 30,
 				},
 				{
-					"f2",
-					10,
+					Name:  "f2",
+					Value: 10,
 				},
 			},
-			map[string]int{
+			expected: map[string]int{
 				"f1": 30,
 				"f2": 10,
 			},
 		},
 		// All pi cut to negative number.
 		{
-			40,
-			types.Pools{
+			f: 40,
+			pools: types.Pools{
 				{
-					"f1",
-					20,
+					Name:  "f1",
+					Value: 20,
 				},
 				{
-					"f2",
-					10,
+					Name:  "f2",
+					Value: 10,
 				},
 			},
-			map[string]int{
+			expected: map[string]int{
 				"f1": 25,
 				"f2": 15,
 			},
 		},
 		// remainder exists.
 		{
-			41,
-			types.Pools{
+			f: 41,
+			pools: types.Pools{
 				{
-					"f1",
-					20,
+					Name:  "f1",
+					Value: 20,
 				},
 				{
-					"f2",
-					10,
+					Name:  "f2",
+					Value: 10,
 				},
 			},
-			map[string]int{
+			expected: map[string]int{
 				"f1": 26,
 				"f2": 15,
 			},
 		},
 		// some pi are equal.
 		{
-			40,
-			types.Pools{
+			f: 40,
+			pools: types.Pools{
 				{
-					"f1",
-					15,
+					Name:  "f1",
+					Value: 15,
 				},
 				{
-					"f2",
-					10,
+					Name:  "f2",
+					Value: 10,
 				},
 				{
-					"f3",
-					10,
+					Name:  "f3",
+					Value: 10,
 				},
 				{
-					"f4",
-					5,
+					Name:  "f4",
+					Value: 5,
 				},
 			},
-			map[string]int{
+			expected: map[string]int{
 				"f1": 15,
 				"f2": 10,
 				"f3": 10,
@@ -115,22 +115,22 @@ func TestMinVariance(t *testing.T) {
 		},
 		// Only cut some of pi.
 		{
-			30,
-			types.Pools{
+			f: 30,
+			pools: types.Pools{
 				{
-					"f1",
-					100,
+					Name:  "f1",
+					Value: 100,
 				},
 				{
-					"f2",
-					100,
+					Name:  "f2",
+					Value: 100,
 				},
 				{
-					"f3",
-					10,
+					Name:  "f3",
+					Value: 10,
 				},
 			},
-			map[string]int{
+			expected: map[string]int{
 				"f1": 15,
 				"f2": 15,
 			},
@@ -138,7 +138,7 @@ func TestMinVariance(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		get, err := MinVariance(tt.pool, tt.f)
+		get, err := MinVariance(tt.pools, tt.f)
 		if err != nil {
 			t.Fatalf("failed to call MinVariance: %v", err)
 		}
