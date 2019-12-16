@@ -1,0 +1,7 @@
+apiVersion: fund.example.com/v1beta1
+kind: FundPool
+metadata:
+  name: fundpool-1
+spec:
+  balance: 120 
+

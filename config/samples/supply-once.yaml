@@ -1,6 +1,6 @@
 apiVersion: fund.example.com/v1beta1
 kind: Supply
 metadata:
-  name: supply-sample
+  name: supply-once
 spec:
-  request: 20
+  request: 40

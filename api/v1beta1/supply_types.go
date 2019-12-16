@@ -43,8 +43,10 @@ type SupplyStatus struct {
 type Phase string
 
 const (
-	// Successfully get funds from the fund pool.
+	// Succeeded to get funds from the fund pool.
 	Succeeded Phase = "Succeeded"
+	// Failed to get funds from the fund pool.
+	Failed Phase = "Failed"
 )
 
 type Allocation struct {

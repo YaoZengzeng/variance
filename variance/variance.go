@@ -6,15 +6,15 @@ import (
 	"github.com/YaoZengzeng/variance/types"
 )
 
-func MinVariance(P types.Pools, f int) (map[string]int, error) {
+func MinVariance(P types.Pools, f int64) (map[string]int64, error) {
 	sort.Sort(P)
 
 	var (
-		aggr, remainder, pos, delta int
+		aggr, remainder, pos, delta int64
 	)
 
-	for pos = 1; pos <= len(P); pos++ {
-		if pos == len(P) {
+	for pos = 1; pos <= int64(len(P)); pos++ {
+		if pos == int64(len(P)) {
 			aggr += f / pos
 			remainder = f % pos
 			break
@@ -33,8 +33,8 @@ func MinVariance(P types.Pools, f int) (map[string]int, error) {
 	}
 
 	delta = 0
-	result := map[string]int{}
-	for i := 0; i < pos; i++ {
+	result := map[string]int64{}
+	for i := int64(0); i < pos; i++ {
 		result[P[i].Name] = aggr
 		if i != 0 {
 			delta += (P[i-1].Value - P[i].Value)

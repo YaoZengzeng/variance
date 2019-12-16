@@ -2,7 +2,7 @@ package types
 
 type Pool struct {
 	Name  string
-	Value int
+	Value int64
 }
 
 type Pools []Pool

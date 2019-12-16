@@ -9,9 +9,9 @@ import (
 
 func TestMinVariance(t *testing.T) {
 	tests := []struct {
-		f        int
+		f        int64
 		pools    types.Pools
-		expected map[string]int
+		expected map[string]int64
 	}{
 		// All pi cut to the same value.
 		{
@@ -26,7 +26,7 @@ func TestMinVariance(t *testing.T) {
 					Value: 100,
 				},
 			},
-			expected: map[string]int{
+			expected: map[string]int64{
 				"f1": 30,
 				"f2": 10,
 			},
@@ -44,7 +44,7 @@ func TestMinVariance(t *testing.T) {
 					Value: 10,
 				},
 			},
-			expected: map[string]int{
+			expected: map[string]int64{
 				"f1": 30,
 				"f2": 10,
 			},
@@ -62,7 +62,7 @@ func TestMinVariance(t *testing.T) {
 					Value: 10,
 				},
 			},
-			expected: map[string]int{
+			expected: map[string]int64{
 				"f1": 25,
 				"f2": 15,
 			},
@@ -80,7 +80,7 @@ func TestMinVariance(t *testing.T) {
 					Value: 10,
 				},
 			},
-			expected: map[string]int{
+			expected: map[string]int64{
 				"f1": 26,
 				"f2": 15,
 			},
@@ -106,7 +106,7 @@ func TestMinVariance(t *testing.T) {
 					Value: 5,
 				},
 			},
-			expected: map[string]int{
+			expected: map[string]int64{
 				"f1": 15,
 				"f2": 10,
 				"f3": 10,
@@ -130,7 +130,7 @@ func TestMinVariance(t *testing.T) {
 					Value: 10,
 				},
 			},
-			expected: map[string]int{
+			expected: map[string]int64{
 				"f1": 15,
 				"f2": 15,
 			},

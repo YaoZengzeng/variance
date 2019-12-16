@@ -1,7 +1,7 @@
 apiVersion: fund.example.com/v1beta1
 kind: FundPool
 metadata:
-  name: fundpool-sample
+  name: fundpool-2
 spec:
-  balance: 120 
+  balance: 100
 
